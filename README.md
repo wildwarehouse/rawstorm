@@ -31,26 +31,23 @@ In the below snippet:
 3. change the 5th line to your dockerhub password ({password} is not my dockerhub password) - if you do not trust the image, then do not run it
 
 ```
-export PACKAGE=openssh-clients &&
-    export ENTRYPOINT=ssh &&
+export ENTRYPOINT=tee &&
     export ORGANIZATION=bigsummer &&
     export DOCKERHUB_ID=emorymerryman &&
-    export DOCKERHUB_PASSWORD={password} &&
-    export VERSION=0.0.00 &&
+    export DOCKERHUB_PASSWORD=<PASSWORD> &&
+    export VERSION=0.1.0 &&
     docker \
         container \
         run \
         --interactive \
-        --tty \
         --rm \
-        --env PACKAGE \
         --env ENTRYPOINT \
         --env ORGANIZATION \
         --env DOCKERHUB_ID \
         --env DOCKERHUB_PASSWORD \
         --env VERSION \
         --volume /var/run/docker.sock:/var/run/docker.sock:ro \
-        wildwarehouse/rawstorm:0.0.0
+        wildwarehouse/rawstorm:0.1.0
 ```
 
 This creates a docker image with ssh and publishes it to dockerhub.
